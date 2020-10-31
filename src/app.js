@@ -6,7 +6,6 @@ import expressValidator from 'express-validator';
 import morgan from 'morgan';
 import authRoute from './routers/auth';
 import productRoute from './routers/product';
-import db from './db';
 
 const app = express();
 
