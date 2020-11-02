@@ -36,12 +36,13 @@ const seedDatabase = async () => {
     const newUser = await User.create(userData);
     return newUser;
   })
-  console.log('seeded users',seedUsers)
-//   const insertedUsers = await Promise.all(seedUsers);
+  
+  const insertedUsers = await Promise.all(seedUsers);
+  console.log('seeded users', insertedUsers);
 
   const products = [
     {
-    //   createdBy: insertedUsers[0].id,
+      createdBy: insertedUsers[0].id,
       product_name: 'pizza',
       price: 20,
       quantity_in_stock: 19,
@@ -49,27 +50,27 @@ const seedDatabase = async () => {
       image: 'image',
     },
     {
-    //   createdBy: insertedUsers[0].id,
+      createdBy: insertedUsers[0].id,
       product_name: 'pizza',
       price: 20,
       quantity_in_stock: 19,
       description: 'pizza description',
-      image: 'image',
+      image: 'image1',
     },
     {
-    //   createdBy: insertedUsers[0].id,
+      createdBy: insertedUsers[0].id,
       product_name: 'pizza',
       price: 20,
       quantity_in_stock: 19,
       description: 'pizza description',
-      image: 'image',
+      image: 'image2',
     },
   ];
-  const seedProducts = products.map(async (productData) => {
+  const seededProducts = products.map(async (productData) => {
     const newProduct = await Product.create(productData);
     return newProduct;
   })
-  console.log('seeded users',seedProducts)
-//   const insertedUsers = await Promise.all(seedUsers);
+  const insertedProducts = await Promise.all(seededProducts);
+  console.log('seeded products', insertedProducts)
 };
 export default seedDatabase;

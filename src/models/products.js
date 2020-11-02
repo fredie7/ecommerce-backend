@@ -2,9 +2,11 @@ import db from '../db';
 import logger from '../dbLogger/logger';
 
 class Products {
-  async parcel(data) {
-    const createProduct = `INSERT INTO products "product_name","price","quantity_in_stock","description"
-    ,"image" returning *`;
+  async create(data) {
+    const createProduct = `INSERT INTO products ("product_name", "price", "quantity_in_stock", "description", "image") 
+      VALUES($1, $2, $3, $4, $5)
+      returning *`;
+
     const values = [
       data.product_name,
       data.price,

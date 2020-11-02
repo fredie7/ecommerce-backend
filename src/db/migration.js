@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS products (
   "price" INT NOT NULL,
   "quantity_in_stock" INT NOT NULL,
   "description" TEXT NOT NULL,
-  "image" VARCHAR(300) UNIQUE NOT NULL,
+  "image" VARCHAR(300) UNIQUE NOT NULL
 );
 `;
 
@@ -32,17 +32,16 @@ const dBase = new Pool({ connectionString });
 
 dBase.on('connect', ()=> {
   logger.info('CONNECTED TO DATABASE');
-  // seedDatabase();
 })
 
 db.query(queryText)
   .then((result) => {
     logger.info(result);
-    seedDatabase.then(() => {
+    seedDatabase().then(() => {
       process.exit(0);
     });
   })
   .catch((error) => {
-    logger.info(error);
+    logger.error(error);
     process.exit(1);
   });
